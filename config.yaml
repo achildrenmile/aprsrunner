@@ -1,0 +1,30 @@
+# APRSRunner Configuration
+# Move an APRS object along a route to advertise ham radio events
+
+aprs_is:
+  callsign: "N0CALL"       # Your amateur radio callsign
+  passcode: "12345"         # APRS-IS passcode (use aprs passcode generator)
+  host: "rotate.aprs2.net"  # APRS-IS server
+  port: 14580               # APRS-IS port
+
+object:
+  name: "HAMFEST"           # Object name (max 9 chars, padded with spaces)
+  symbol_table: "/"         # Symbol table ('/' = primary, '\\' = alternate)
+  symbol: "r"               # Symbol code (e.g., 'r' = antenna, '\\' + 'r' = ?)
+  comment: "Hamfest Jun 14 9AM City Park - 147.000 MHz"  # Event info in comment
+
+movement:
+  speed_kmh: 25.0           # Speed in km/h along route
+  beacon_interval: 120      # Seconds between position beacons
+  loop: true                # Restart route when finished (false = stop at end)
+
+route:
+  # Option 1: Inline waypoints (lat, lon pairs)
+  waypoints:
+    - [40.7128, -74.0060]   # New York City
+    - [40.7580, -73.9855]   # Times Square
+    - [40.7484, -73.9857]   # Empire State Building
+    - [40.6892, -74.0445]   # Statue of Liberty
+
+  # Option 2: GPX file (uncomment and comment out waypoints above)
+  # gpx_file: "route.gpx"
