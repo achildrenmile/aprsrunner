@@ -14,27 +14,27 @@ object:
   symbol: "p"               # Dog (rover) - running through Austria
   comment: "Psst... ned weitersagen! https://oeradio.at"
   comments:
-    # Kärntnerisch dialect messages — one picked randomly per beacon
-    - "Wau! I laf durch gonz Estarreich! https://oeradio.at"
-    - "Psst... ned weitersagen! https://oeradio.at"
+    # Kaerntnerisch (Gailtal/Unterkärnten) dialect messages
+    - "Wau! I laf durch gonz Östarreich! https://oeradio.at"
+    - "Psst... ned weitasogn! https://oeradio.at"
     - "A Hundsleben is des... oba a scheens! https://oeradio.at"
-    - "Wos schaust so? I bin a Funkerhund! https://oeradio.at"
-    - "Vom Woerthersee bis Wien - olles mein Revier! https://oeradio.at"
-    - "Ka Wurscht is mir zu weit! https://oeradio.at"
-    - "I kenn jede Huettn in Kaernten! https://oeradio.at"
+    - "Wos schaugsch so? I bin a Funkahund! https://oeradio.at"
+    - "Vom Wörthersee bis Wien - olls mei Revier! https://oeradio.at"
+    - "Ka Wurscht is ma z'weit! https://oeradio.at"
+    - "I kenn jede Hittn in Kärntn! https://oeradio.at"
     - "Gib Laut auf https://oeradio.at!"
-    - "Der friaheste Hund fangt den Repeater! https://oeradio.at"
-    - "Hearst, do bin i scho wieder! https://oeradio.at"
-    - "Auf da Mautneralm is guat bellern! https://oeradio.at"
+    - "Hearsch, do bin i scho wieda! https://oeradio.at"
+    - "Af da Mautneralm is guat belln! https://oeradio.at"
     - "73 de OE8RADIO - Wau! https://oeradio.at"
-    - "Schneller ois da Wind uebern Grossglockner! https://oeradio.at"
-    - "I bin da Funkhund - heast mi? https://oeradio.at"
-    - "Vo Bregenz bis Eisnstod - ollas obgrast! https://oeradio.at"
-    - "Mei Revier is gonz Estarreich! https://oeradio.at"
-    - "Wuff! Ane Runde nu, daun a Jausn! https://oeradio.at"
-    - "De Alpen san mei Hundepoak! https://oeradio.at"
+    - "Schnölla ois da Wind übern Glockner! https://oeradio.at"
+    - "I bin da Funkahund - hearsch mi? https://oeradio.at"
+    - "Vo Bregenz bis Eisnstod - olls obgrost! https://oeradio.at"
+    - "Mei Revier is gonz Östarreich! https://oeradio.at"
+    - "Wuff! A Runde nu, nochand a Jausn! https://oeradio.at"
     - "Do schau her - a Hund am Funk! https://oeradio.at"
     - "I brauch ka Leine, i hob APRS! https://oeradio.at"
+    - "Da Hund kummt aus Kärntn! https://oeradio.at"
+    - "I schnüfl mi durch olls nein! https://oeradio.at"
 
 movement:
   speed_kmh: 80.0           # Austria-wide mix of Autobahn + country roads
