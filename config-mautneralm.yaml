@@ -1,0 +1,27 @@
+# APRSRunner - Mautneralm Shuttle
+# Loop from Lamprechtbauer to Mautneralm and back (~1 km, slow pace)
+
+aprs_is:
+  callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
+  passcode: "00000"         # Override with APRS_PASSCODE env var
+  host: "rotate.aprs2.net"
+  port: 14580
+
+object:
+  name: "Mautner"           # 7 chars, fits APRS 9-char limit
+  symbol_table: "/"
+  symbol: "["               # Jogger/hiker - trudging up to the Alm
+  comment: "Auf da Mautner Alm is a Gaude! https://oeradio.at"
+
+movement:
+  speed_kmh: 5.0            # Slow hike up the mountain
+  beacon_interval: 120      # Every 2 minutes
+  loop: true                # Endless up and down
+
+route:
+  waypoints:
+    - [46.6564, 12.9777]    # Gasthof Lamprechtbauer (1501m)
+    - [46.6593, 12.9779]    # OE8XEF-10 (Plöckenpass road, 1050m)
+    - [46.6564, 12.9772]    # Mautneralm (1720m)
+    - [46.6593, 12.9779]    # OE8XEF-10 (return)
+    - [46.6564, 12.9777]    # Gasthof Lamprechtbauer (close loop)
