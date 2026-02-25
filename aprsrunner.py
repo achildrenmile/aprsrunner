@@ -311,7 +311,7 @@ def run(cfg, dry_run=False, state_file=None):
 
     def shutdown(signum, frame):
         nonlocal running
-        log.info("Shutdown signal received, sending kill packet...")
+        log.info("Shutdown signal received, stopping gracefully...")
         running = False
 
     signal.signal(signal.SIGINT, shutdown)
@@ -375,17 +375,10 @@ def run(cfg, dry_run=False, state_file=None):
                     time.sleep(1)
 
     finally:
-        # Send kill packet on exit
-        kill = build_kill_packet(callsign, obj_name)
-        log.info("Sending kill packet to remove object from map")
-        log.debug("Kill packet: %s", kill)
-        if dry_run:
-            print(f"TX: {kill}")
-        else:
-            try:
-                ais.sendall(kill)
-            except Exception:
-                log.warning("Failed to send kill packet")
+        # No kill packet on shutdown — the dog just pauses and resumes on restart.
+        # Kill packets cause aprs.fi to remove the object and trigger
+        # "Location changes too fast" penalties on the next startup.
+        if not dry_run and ais:
             ais.close()
         # Keep state file so the dog resumes on restart/rollout
         if state_file:
