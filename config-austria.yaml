@@ -1,0 +1,50 @@
+# APRSRunner - Austria Route
+# Loop through all Landeshauptstädte (~1650 km, ~21h per loop at 80 km/h)
+# Start: Nötsch im Gailtal, visits all 9 state capitals
+
+aprs_is:
+  callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
+  passcode: "00000"         # Override with APRS_PASSCODE env var
+  host: "rotate.aprs2.net"
+  port: 14580
+
+object:
+  name: "OE8RADIO"          # 8 chars, fits APRS 9-char limit
+  symbol_table: "/"
+  symbol: "p"               # Dog (rover) - running through Austria
+  comment: "Psst... ned weitersagen! https://oeradio.at"
+
+movement:
+  speed_kmh: 80.0           # Austria-wide mix of Autobahn + country roads
+  beacon_interval: 90       # Fast but within APRS-IS norms for moving objects
+  loop: true                # Endless loop
+
+route:
+  waypoints:
+    # Nötsch → Gailtal west → Mautneralm detour
+    - [46.5883, 13.6228]    # Nötsch im Gailtal — START
+    - [46.6280, 13.3670]    # Hermagor
+    - [46.6781, 13.0089]    # Kötschach-Mauthen
+    - [46.6593, 12.9779]    # OE8XEF-10 (Plöckenpass road, 1050m)
+    - [46.6564, 12.9772]    # Mautneralm (1720m)
+    # North through East Tyrol → Tirol → Vorarlberg
+    - [46.6781, 13.0089]    # Kötschach-Mauthen (return)
+    - [46.7442, 12.9722]    # Oberdrauburg
+    - [46.8294, 12.7688]    # Lienz
+    - [47.2819, 12.4822]    # Mittersill (Felbertauern)
+    - [47.2692, 11.3933]    # Innsbruck — Tirol
+    - [47.2354, 9.5990]     # Feldkirch
+    - [47.5031, 9.7471]     # Bregenz — Vorarlberg
+    # East across northern Austria
+    - [47.2692, 11.3933]    # Innsbruck (return east)
+    - [47.4892, 12.0647]    # Wörgl
+    - [47.8095, 13.0550]    # Salzburg — Salzburg
+    - [48.3064, 14.2858]    # Linz — Oberösterreich
+    - [48.2042, 15.6231]    # St. Pölten — Niederösterreich
+    - [48.2082, 16.3738]    # Wien — Wien
+    - [47.8453, 16.5189]    # Eisenstadt — Burgenland
+    # South back to Kärnten
+    - [47.0707, 15.4395]    # Graz — Steiermark
+    - [46.6247, 14.3050]    # Klagenfurt — Kärnten
+    - [46.6103, 13.8558]    # Villach
+    - [46.5883, 13.6228]    # Nötsch (close loop)

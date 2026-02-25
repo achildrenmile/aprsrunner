@@ -5,3 +5,5 @@ services:
     environment:
       - APRS_CALLSIGN=${APRS_CALLSIGN}
       - APRS_PASSCODE=${APRS_PASSCODE}
+    volumes:
+      - ./data:/data

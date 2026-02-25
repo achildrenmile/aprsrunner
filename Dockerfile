@@ -6,7 +6,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
 COPY aprsrunner.py .
-COPY config-carinthia.yaml .
+COPY config-austria.yaml .
 
 ENTRYPOINT ["python", "aprsrunner.py"]
-CMD ["--config", "config-carinthia.yaml"]
+CMD ["--config", "config-austria.yaml", "--state-file", "/data/state.json"]

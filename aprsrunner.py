@@ -2,6 +2,7 @@
 """APRSRunner - Move an APRS object along a route via APRS-IS."""
 
 import argparse
+import json
 import logging
 import math
 import os
@@ -264,7 +265,25 @@ def load_config(config_path):
 # Main loop
 # ---------------------------------------------------------------------------
 
-def run(cfg, dry_run=False):
+def load_state(state_file):
+    """Load current_distance from state file, return 0.0 if missing/invalid."""
+    try:
+        with open(state_file) as f:
+            data = json.load(f)
+        distance = float(data.get("current_distance", 0.0))
+        log.info("Resumed from state file: %.2f km", distance)
+        return distance
+    except (FileNotFoundError, json.JSONDecodeError, ValueError, TypeError):
+        return 0.0
+
+
+def save_state(state_file, current_distance):
+    """Write current_distance to state file."""
+    with open(state_file, "w") as f:
+        json.dump({"current_distance": current_distance}, f)
+
+
+def run(cfg, dry_run=False, state_file=None):
     """Main runner: connect to APRS-IS and beacon the object along the route."""
     aprs_cfg = cfg["aprs_is"]
     obj_cfg = cfg["object"]
@@ -280,8 +299,12 @@ def run(cfg, dry_run=False):
     callsign = aprs_cfg["callsign"]
     obj_name = obj_cfg["name"]
 
-    # State
+    # State — resume from state file if available
     current_distance = 0.0
+    if state_file:
+        current_distance = load_state(state_file)
+        if current_distance >= route.total_distance:
+            current_distance = 0.0
     running = True
 
     def shutdown(signum, frame):
@@ -334,6 +357,10 @@ def run(cfg, dry_run=False):
                     log.info("Route complete, stopping")
                     break
 
+            # Persist state after each beacon
+            if state_file:
+                save_state(state_file, current_distance)
+
             # Wait for next beacon
             if running:
                 log.debug("Sleeping %d seconds...", interval)
@@ -355,6 +382,13 @@ def run(cfg, dry_run=False):
             except Exception:
                 log.warning("Failed to send kill packet")
             ais.close()
+        # Delete state file on clean shutdown (kill packet sent = object removed)
+        if state_file:
+            try:
+                os.remove(state_file)
+                log.info("State file removed")
+            except FileNotFoundError:
+                pass
         log.info("Done")
 
 
@@ -378,6 +412,10 @@ def main():
         "--dry-run", action="store_true",
         help="Print packets to stdout instead of transmitting",
     )
+    parser.add_argument(
+        "--state-file",
+        help="Path to state file for restart resilience (JSON)",
+    )
     args = parser.parse_args()
 
     logging.basicConfig(
@@ -392,7 +430,7 @@ def main():
         log.error("Config error: %s", e)
         sys.exit(1)
 
-    run(cfg, dry_run=args.dry_run)
+    run(cfg, dry_run=args.dry_run, state_file=args.state_file)
 
 
 if __name__ == "__main__":
