@@ -11,7 +11,7 @@ object:
   name: "Bandwacht"         # 9 chars, max APRS limit
   symbol_table: "/"
   symbol: "Y"               # Yacht
-  comment: "Auf der Jagd nach QRP! https://webrx.at"
+  comment: "Auf der Jagd nach QRPp! https://webrx.at"
 
 movement:
   speed_kmh: 15.0           # Leisurely pace down the mountain
