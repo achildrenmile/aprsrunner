@@ -6,6 +6,7 @@ import json
 import logging
 import math
 import os
+import random
 import signal
 import sys
 import time
@@ -235,6 +236,7 @@ def load_config(config_path):
     obj.setdefault("symbol_table", "/")
     obj.setdefault("symbol", "r")
     obj.setdefault("comment", "")
+    obj.setdefault("comments", [])
 
     mov = cfg["movement"]
     mov.setdefault("speed_kmh", 25.0)
@@ -327,12 +329,15 @@ def run(cfg, dry_run=False, state_file=None):
     else:
         log.info("DRY RUN - not connecting to APRS-IS")
 
+    comments = obj_cfg.get("comments") or [obj_cfg["comment"]]
+
     try:
         while running:
             lat, lon = route.position_at_distance(current_distance)
+            comment = random.choice(comments)
             packet = build_object_packet(
                 callsign, obj_name, lat, lon,
-                obj_cfg["symbol_table"], obj_cfg["symbol"], obj_cfg["comment"],
+                obj_cfg["symbol_table"], obj_cfg["symbol"], comment,
             )
 
             log.info("Distance: %.2f/%.2f km | Position: %.5f, %.5f",
@@ -382,13 +387,9 @@ def run(cfg, dry_run=False, state_file=None):
             except Exception:
                 log.warning("Failed to send kill packet")
             ais.close()
-        # Delete state file on clean shutdown (kill packet sent = object removed)
+        # Keep state file so the dog resumes on restart/rollout
         if state_file:
-            try:
-                os.remove(state_file)
-                log.info("State file removed")
-            except FileNotFoundError:
-                pass
+            save_state(state_file, current_distance)
         log.info("Done")
 
 
