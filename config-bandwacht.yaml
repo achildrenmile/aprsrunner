@@ -21,8 +21,10 @@ movement:
 route:
   waypoints:
     - [46.7589, 13.4587]    # Goldeck Gipfel (2142m)
-    - [46.8061, 13.4403]    # Gendorf
+    - [46.8119, 13.4279]    # Faschendorf
+    - [46.8070, 13.4396]    # Gendorf
     - [46.8083, 13.4700]    # Baldramsdorf
+    - [46.7987, 13.4647]    # Unterhaus
     - [46.7997, 13.4994]    # Spittal an der Drau
     - [46.7985, 13.4960]    # GH Brückenwirt
     - [46.7589, 13.4587]    # Goldeck Gipfel (close loop)
