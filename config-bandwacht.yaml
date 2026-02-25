@@ -1,0 +1,28 @@
+# APRSRunner - Bandwacht
+# Loop from Goldeck via Gendorf, Baldramsdorf, Spittal, Brückenwirt and back
+
+aprs_is:
+  callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
+  passcode: "00000"         # Override with APRS_PASSCODE env var
+  host: "rotate.aprs2.net"
+  port: 14580
+
+object:
+  name: "Bandwacht"         # 9 chars, max APRS limit
+  symbol_table: "/"
+  symbol: "Y"               # Yacht
+  comment: "Auf der Jagd nach QRP! https://oeradio.at"
+
+movement:
+  speed_kmh: 15.0           # Leisurely pace down the mountain
+  beacon_interval: 120      # Every 2 minutes
+  loop: true                # Endless loop
+
+route:
+  waypoints:
+    - [46.7589, 13.4587]    # Goldeck Gipfel (2142m)
+    - [46.8061, 13.4403]    # Gendorf
+    - [46.8083, 13.4700]    # Baldramsdorf
+    - [46.7997, 13.4994]    # Spittal an der Drau
+    - [46.7985, 13.4960]    # GH Brückenwirt
+    - [46.7589, 13.4587]    # Goldeck Gipfel (close loop)
