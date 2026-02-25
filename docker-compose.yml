@@ -1,0 +1,7 @@
+services:
+  aprsrunner:
+    build: .
+    restart: unless-stopped
+    environment:
+      - APRS_CALLSIGN=${APRS_CALLSIGN}
+      - APRS_PASSCODE=${APRS_PASSCODE}

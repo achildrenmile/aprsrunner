@@ -1,0 +1,38 @@
+# APRSRunner - Carinthia Route
+# Loop through Carinthia (~210 km, ~3.5h per loop at 60 km/h)
+# Westbound via Gailtal, eastbound via Drautal
+
+aprs_is:
+  callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
+  passcode: "00000"         # Override with APRS_PASSCODE env var
+  host: "rotate.aprs2.net"
+  port: 14580
+
+object:
+  name: "OE8RADIO"          # 8 chars, fits APRS 9-char limit
+  symbol_table: "/"
+  symbol: "e"               # Horse (equestrian) - only animal in primary table
+  comment: "schau rein bei https://oeradio.at"
+
+movement:
+  speed_kmh: 60.0           # ~3.5h per loop
+  beacon_interval: 90       # Fast but within APRS-IS norms for moving objects
+  loop: true                # Endless loop
+
+route:
+  waypoints:
+    # Westbound via Gailtal (south side)
+    - [46.6247, 14.3050]    # Klagenfurt
+    - [46.6131, 14.0403]    # Velden am Wörthersee
+    - [46.6103, 13.8558]    # Villach
+    - [46.5514, 13.7003]    # Arnoldstein
+    - [46.6000, 13.3917]    # Hermagor
+    - [46.6781, 13.0089]    # Kötschach-Mauthen
+    - [46.6593, 12.9779]    # OE8XEF-10 (Plöckenpass road, 1050m)
+    - [46.6564, 12.9772]    # Mautneralm (1720m)
+    # Eastbound via Drautal (north side)
+    - [46.6781, 13.0089]    # Kötschach-Mauthen (return)
+    - [46.7442, 12.9722]    # Oberdrauburg
+    - [46.7997, 13.4994]    # Spittal an der Drau
+    - [46.7269, 14.0953]    # Feldkirchen in Kärnten
+    - [46.6247, 14.3050]    # Klagenfurt (close the loop)

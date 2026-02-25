@@ -4,6 +4,7 @@
 import argparse
 import logging
 import math
+import os
 import signal
 import sys
 import time
@@ -213,6 +214,13 @@ def load_config(config_path):
     aprs = cfg["aprs_is"]
     aprs.setdefault("host", "rotate.aprs2.net")
     aprs.setdefault("port", 14580)
+
+    # Environment variable overrides (for Docker secrets)
+    if os.environ.get("APRS_CALLSIGN"):
+        aprs["callsign"] = os.environ["APRS_CALLSIGN"]
+    if os.environ.get("APRS_PASSCODE"):
+        aprs["passcode"] = os.environ["APRS_PASSCODE"]
+
     if not aprs.get("callsign"):
         raise ValueError("aprs_is.callsign is required")
     if not aprs.get("passcode"):
