@@ -8,9 +8,9 @@ aprs_is:
   port: 14580
 
 object:
-  name: "Mautner"           # 7 chars, fits APRS 9-char limit
+  name: "DaTourist"         # 9 chars, max APRS limit
   symbol_table: "/"
-  symbol: "["               # Jogger/hiker - trudging up to the Alm
+  symbol: "Y"               # Yacht - sailing up to the Alm!
   comment: "Auf da Mautner Alm is a Gaude! https://oeradio.at"
 
 movement:
