@@ -7,32 +7,51 @@ Move an APRS object along a defined route via APRS-IS to advertise ham radio eve
 - Python 3.8+
 - Amateur radio callsign with APRS-IS passcode
 
-## Installation
+## Quick Start
+
+### Local
 
 ```bash
 pip install -r requirements.txt
+cp config.yaml myevent.yaml
+# Edit myevent.yaml with your callsign, passcode, route, etc.
+python aprsrunner.py --config myevent.yaml --dry-run -v
+python aprsrunner.py --config myevent.yaml
 ```
 
-## Quick Start
-
-1. Copy and edit the config file:
-   ```bash
-   cp config.yaml myevent.yaml
-   ```
-
-2. Set your callsign and passcode in `myevent.yaml`
-
-3. Test with dry-run mode:
-   ```bash
-   python aprsrunner.py --config myevent.yaml --dry-run -v
-   ```
-
-4. Run for real:
-   ```bash
-   python aprsrunner.py --config myevent.yaml
-   ```
-
 Press `Ctrl+C` to stop. A kill packet is sent automatically to remove the object from the map.
+
+### Docker
+
+```bash
+docker build -t aprsrunner .
+docker run -d --name aprsrunner --restart unless-stopped \
+  -e APRS_CALLSIGN=OE8YML-11 \
+  -e APRS_PASSCODE=12345 \
+  aprsrunner
+```
+
+Or with docker compose:
+
+```bash
+APRS_CALLSIGN=OE8YML-11 APRS_PASSCODE=12345 docker compose up -d
+```
+
+The default Dockerfile uses `config-carinthia.yaml`. Override with:
+
+```bash
+docker run --rm -e APRS_CALLSIGN=N0CALL -e APRS_PASSCODE=12345 \
+  aprsrunner --config config.yaml
+```
+
+## Environment Variables
+
+Environment variables override values from the config file, keeping secrets out of YAML:
+
+| Variable         | Overrides            |
+|------------------|----------------------|
+| `APRS_CALLSIGN`  | `aprs_is.callsign`  |
+| `APRS_PASSCODE`  | `aprs_is.passcode`  |
 
 ## Configuration
 
@@ -83,6 +102,13 @@ route:
 
 GPX paths are resolved relative to the config file directory.
 
+## Included Configs
+
+| File | Route | Description |
+|------|-------|-------------|
+| `config.yaml` | New York City | Example config with NYC landmarks |
+| `config-carinthia.yaml` | Carinthia, Austria | ~224 km loop: Klagenfurt → Gailtal → Plöckenpass → Drautal → Klagenfurt |
+
 ## CLI Options
 
 ```
@@ -101,10 +127,13 @@ Common symbols for events:
 | Table | Code | Description     |
 |-------|------|-----------------|
 | `/`   | `r`  | Antenna         |
-| `/`   | `-`  | House            |
+| `/`   | `-`  | House           |
 | `/`   | `k`  | School          |
 | `\`   | `C`  | Club / event    |
-| `/`   | `p`  | Rover           |
+| `/`   | `p`  | Dog / rover     |
+| `/`   | `e`  | Horse           |
+| `/`   | `b`  | Bicycle         |
+| `/`   | `[`  | Jogger          |
 
 See the [APRS symbol table](http://www.aprs.org/symbols.html) for the full list.
 

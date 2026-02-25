@@ -11,8 +11,8 @@ aprs_is:
 object:
   name: "OE8RADIO"          # 8 chars, fits APRS 9-char limit
   symbol_table: "/"
-  symbol: "e"               # Horse (equestrian) - only animal in primary table
-  comment: "schau rein bei https://oeradio.at"
+  symbol: "p"               # Dog (rover) - running through Carinthia
+  comment: "Psst... ned weitersagen! https://oeradio.at"
 
 movement:
   speed_kmh: 60.0           # ~3.5h per loop
