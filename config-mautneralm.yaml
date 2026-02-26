@@ -1,5 +1,5 @@
 # APRSRunner - Windbeidl über Kötschach-Mauthen
-# Balloon circles around the town, visiting OE8XEF-10 on every pass
+# Balloon circles the town, visiting OE8XEF-10 on every pass
 
 aprs_is:
   callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
@@ -31,19 +31,18 @@ movement:
 
 route:
   waypoints:
-    # Start at OE8XEF-10, north to town
-    - [46.6593, 12.9779]    # OE8XEF-10 (Plöckenpass road)
+    # Start at OE8XEF-10, circle clockwise around Kötschach-Mauthen
+    - [46.6593, 12.9779]    # OE8XEF-10 (start)
     - [46.6680, 12.9850]    # Mauthen
+    - [46.6900, 12.9850]    # Sittmoos (north)
+    - [46.6950, 13.0000]    # Laas
+    - [46.6850, 13.0100]    # Kötschach Nord
     - [46.6720, 13.0060]    # Kötschach Zentrum
-    # Circle north and east
-    - [46.6850, 13.0100]    # Laas (north of town)
     - [46.6750, 13.0300]    # Würmlach (east)
-    # Back south to OE8XEF-10
-    - [46.6680, 13.0050]    # Kötschach (south)
+    - [46.6650, 13.0150]    # Süd von Kötschach
     - [46.6593, 12.9779]    # OE8XEF-10 (2nd visit)
-    # Up to Mautneralm
+    # Detour up to Mautneralm
     - [46.6547, 12.9755]    # Enzianhütte (1496m)
     - [46.6530, 12.9745]    # Mautneralm Gipfel (1720m)
-    # Back down through OE8XEF-10
     - [46.6547, 12.9755]    # Enzianhütte (return)
     - [46.6593, 12.9779]    # OE8XEF-10 (3rd visit, close loop)
