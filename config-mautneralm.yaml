@@ -1,5 +1,5 @@
-# APRSRunner - Mautneralm Shuttle
-# Loop from Kreuzberg via OE8XEF-10 to Enzianhütte and back
+# APRSRunner - Windbeidl über der Mautneralm
+# Ballon schwebt von Kreuzberg über Enzianhütte zum Gipfel und zurück
 
 aprs_is:
   callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
@@ -8,26 +8,26 @@ aprs_is:
   port: 14580
 
 object:
-  name: "DaTourist"         # 9 chars, max APRS limit
+  name: "Windbeidl"         # 9 chars, max APRS limit
   symbol_table: "/"
-  symbol: "Y"               # Yacht - sailing up to the Alm!
-  comment: "Auf da Mautner Alm is a Gaude! https://oeradio.at"
+  symbol: "O"               # Balloon!
+  comment: "A Windbeidl über da Mautneralm! https://oeradio.at"
   comments:
-    - "Auf da Mautner Alm is a Gaude! https://oeradio.at"
-    - "Do gibt's an Kas und an Speck! https://oeradio.at"
-    - "Wer auffi will, muass a geh! https://oeradio.at"
-    - "A Jausn auf da Alm is des Beste! https://oeradio.at"
-    - "Da Enzian bliaht scho wieda! https://oeradio.at"
-    - "Af da Mautneralm scheint ollawei d'Sunn! https://oeradio.at"
-    - "A Schnapsal auf da Hittn! https://oeradio.at"
-    - "Vo da Enzianhittn siacht ma weit! https://oeradio.at"
-    - "De Luft do oben is a Wahnsinn! https://oeradio.at"
-    - "I geh auffi und kimm nimma owi! https://oeradio.at"
+    - "I schweb über olle Gipfl! https://oeradio.at"
+    - "Vo do oben schaut olls kluan aus! https://oeradio.at"
+    - "Da Wind tragt mi wohin a will! https://oeradio.at"
+    - "A Windbeidl über da Mautneralm! https://oeradio.at"
+    - "I bin da höchste Kärntna! https://oeradio.at"
+    - "Heisse Luft und scheene Aussicht! https://oeradio.at"
+    - "Unta mir de Enzianhittn! https://oeradio.at"
+    - "Do oben gibts kan Stau! https://oeradio.at"
+    - "I brauch kan Weg, i flieg! https://oeradio.at"
+    - "Auffi geht's, owi schaug i! https://oeradio.at"
 
 movement:
-  speed_kmh: 5.0            # Slow hike up the mountain
+  speed_kmh: 5.0            # Slow drift over the mountain
   beacon_interval: 120      # Every 2 minutes
-  loop: true                # Endless up and down
+  loop: true                # Endless floating
 
 route:
   waypoints:
