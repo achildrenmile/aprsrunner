@@ -1,5 +1,5 @@
-# APRSRunner - Windbeidl über der Mautneralm
-# Ballon schwebt von Kreuzberg über Enzianhütte zum Gipfel und zurück
+# APRSRunner - Windbeidl über Kötschach-Mauthen
+# Balloon circles around the town, visiting OE8XEF-10 on every pass
 
 aprs_is:
   callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
@@ -25,14 +25,25 @@ object:
     - "Auffi geht's, owi schaug i! https://oeradio.at"
 
 movement:
-  speed_kmh: 5.0            # Slow drift over the mountain
+  speed_kmh: 10.0           # Gentle balloon drift
   beacon_interval: 120      # Every 2 minutes
   loop: true                # Endless floating
 
 route:
   waypoints:
-    - [46.6593, 12.9779]    # Kreuzberg / OE8XEF-10 (1050m)
+    # Start at OE8XEF-10, north to town
+    - [46.6593, 12.9779]    # OE8XEF-10 (Plöckenpass road)
+    - [46.6680, 12.9850]    # Mauthen
+    - [46.6720, 13.0060]    # Kötschach Zentrum
+    # Circle north and east
+    - [46.6850, 13.0100]    # Laas (north of town)
+    - [46.6750, 13.0300]    # Würmlach (east)
+    # Back south to OE8XEF-10
+    - [46.6680, 13.0050]    # Kötschach (south)
+    - [46.6593, 12.9779]    # OE8XEF-10 (2nd visit)
+    # Up to Mautneralm
     - [46.6547, 12.9755]    # Enzianhütte (1496m)
     - [46.6530, 12.9745]    # Mautneralm Gipfel (1720m)
+    # Back down through OE8XEF-10
     - [46.6547, 12.9755]    # Enzianhütte (return)
-    - [46.6593, 12.9779]    # Kreuzberg (close loop)
+    - [46.6593, 12.9779]    # OE8XEF-10 (3rd visit, close loop)
