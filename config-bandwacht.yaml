@@ -10,7 +10,7 @@ aprs_is:
 object:
   name: "Bandwacht"         # 9 chars, max APRS limit
   symbol_table: "/"
-  symbol: "Y"               # Yacht
+  symbol: "X"               # Helicopter
   comment: "Auf der Jagd nach QRPp! https://webrx.at"
 
 movement:
