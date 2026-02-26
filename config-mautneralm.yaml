@@ -1,5 +1,5 @@
 # APRSRunner - Mautneralm Shuttle
-# Loop from Lamprechtbauer to Mautneralm and back (~1 km, slow pace)
+# Loop from Kreuzberg via OE8XEF-10 to Enzianhütte and back
 
 aprs_is:
   callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
@@ -12,6 +12,17 @@ object:
   symbol_table: "/"
   symbol: "Y"               # Yacht - sailing up to the Alm!
   comment: "Auf da Mautner Alm is a Gaude! https://oeradio.at"
+  comments:
+    - "Auf da Mautner Alm is a Gaude! https://oeradio.at"
+    - "Do gibt's an Kas und an Speck! https://oeradio.at"
+    - "Wer auffi will, muass a geh! https://oeradio.at"
+    - "A Jausn auf da Alm is des Beste! https://oeradio.at"
+    - "Da Enzian bliaht scho wieda! https://oeradio.at"
+    - "Af da Mautneralm scheint ollawei d'Sunn! https://oeradio.at"
+    - "A Schnapsal auf da Hittn! https://oeradio.at"
+    - "Vo da Enzianhittn siacht ma weit! https://oeradio.at"
+    - "De Luft do oben is a Wahnsinn! https://oeradio.at"
+    - "I geh auffi und kimm nimma owi! https://oeradio.at"
 
 movement:
   speed_kmh: 5.0            # Slow hike up the mountain
@@ -20,8 +31,8 @@ movement:
 
 route:
   waypoints:
-    - [46.6564, 12.9777]    # Gasthof Lamprechtbauer (1501m)
-    - [46.6593, 12.9779]    # OE8XEF-10 (Plöckenpass road, 1050m)
-    - [46.6564, 12.9772]    # Mautneralm (1720m)
-    - [46.6593, 12.9779]    # OE8XEF-10 (return)
-    - [46.6564, 12.9777]    # Gasthof Lamprechtbauer (close loop)
+    - [46.6593, 12.9779]    # Kreuzberg / OE8XEF-10 (1050m)
+    - [46.6547, 12.9755]    # Enzianhütte (1496m)
+    - [46.6530, 12.9745]    # Mautneralm Gipfel (1720m)
+    - [46.6547, 12.9755]    # Enzianhütte (return)
+    - [46.6593, 12.9779]    # Kreuzberg (close loop)
