@@ -1,0 +1,52 @@
+# APRSRunner - Bandpatrouille Spittal
+# Jogger patrols through Spittal an der Drau checking the bands
+
+aprs_is:
+  callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
+  passcode: "00000"         # Override with APRS_PASSCODE env var
+  host: "rotate.aprs2.net"
+  port: 14580
+
+object:
+  name: "BandPatrl"         # 9 chars, Bandpatrouille
+  symbol_table: "/"
+  symbol: "P"               # Police — Bandpatrouille!
+  comment: "Bandpatrouille Spittal! https://webrx.at"
+  comments:
+    - "Achtung, Bandpolizei! https://webrx.at"
+    - "Hoit's eich on de Frequenzen! https://webrx.at"
+    - "Wer sendt do ohne Rufzeichn?! https://webrx.at"
+    - "QRM am Hauptplotz - i kumm! https://webrx.at"
+    - "Olle Baender sauber - Weitamarsch! https://webrx.at"
+    - "I hör olles - und i mein OLLES! https://webrx.at"
+    - "Tatü tata - de Bandpolizei is do! https://webrx.at"
+    - "Sie senden auf 145.500 - ANZEIGE! https://webrx.at"
+    - "Oberinspektor BandPatrl meldet: nix los! https://webrx.at"
+    - "Hob i do an Spurious g'heard?! https://webrx.at"
+    - "Bitte Rufzeichn nenna - SOFORT! https://webrx.at"
+    - "A Runde nu durch Spittal! https://webrx.at"
+    - "Vom Bahnhof bis zum Schloss - olles unter Kontrolle! https://webrx.at"
+    - "73 - de Patrouille geht weida! https://webrx.at"
+    - "Do stimmt wos ned am Band... https://webrx.at"
+    - "Frequenz frei? Des bestimm immer nu I! https://webrx.at"
+    - "Spittal is sicher - de Baender san sauber! https://webrx.at"
+    - "Kennt wer an Roger Beep? VERDÄCHTIG! https://webrx.at"
+    - "I brauch ka Blaulicht, i hob an SDR! https://webrx.at"
+    - "Wehe dem der do a Kerze anzündt! https://webrx.at"
+
+movement:
+  speed_kmh: 5.0            # Walking patrol speed
+  beacon_interval: 120      # Every 2 minutes
+  loop: true                # Endless patrol
+
+route:
+  waypoints:
+    # Clockwise patrol loop through Spittal an der Drau
+    - [46.8046, 13.4895]    # Ladinigstraße 7 (HOME BASE)
+    - [46.7957, 13.4875]    # Bahnhof Spittal-Millstättersee
+    - [46.7981, 13.4939]    # Stadtpark
+    - [46.7982, 13.4960]    # Burgplatz / Schloss Porcia
+    - [46.7976, 13.4973]    # Hauptplatz
+    - [46.7962, 13.5020]    # Villacher Straße (Ost)
+    - [46.8045, 13.4973]    # Liesersteig (Nord)
+    - [46.8046, 13.4895]    # Ladinigstraße 7 (close loop)

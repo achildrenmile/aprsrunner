@@ -1,5 +1,5 @@
 # APRSRunner - Windbeidl über Kötschach-Mauthen
-# Balloon circles the town, visiting OE8XEF-10 on every pass
+# Balloon circles the town, flies the Karnische ridge, visits OE8XEF-10 often
 
 aprs_is:
   callsign: "N0CALL"       # Override with APRS_CALLSIGN env var
@@ -39,7 +39,12 @@ route:
     - [46.6850, 13.0100]    # Kötschach Nord
     - [46.6720, 13.0060]    # Kötschach Zentrum
     - [46.6750, 13.0300]    # Würmlach (east)
-    - [46.6650, 13.0150]    # Süd von Kötschach
+    # Karnische ridge flight: east to west along the peaks
+    - [46.6248, 13.0637]    # Zollnerhöhe (1931m)
+    - [46.6286, 13.0167]    # Würmlacher Höhe (1581m)
+    - [46.6255, 12.9910]    # Elferspitz (2254m)
+    - [46.6276, 12.9821]    # Polinik (2332m)
+    # Return to OE8XEF-10
     - [46.6593, 12.9779]    # OE8XEF-10 (2nd visit)
     # Detour up to Mautneralm
     - [46.6547, 12.9755]    # Enzianhütte (1496m)
